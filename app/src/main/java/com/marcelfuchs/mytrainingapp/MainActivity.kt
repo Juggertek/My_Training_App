@@ -22,16 +22,17 @@ class MainActivity : AppCompatActivity() {
 
         btnAdd.setOnClickListener { addWord() }
         btnRemove.setOnClickListener { removeWord() }
-
-
     }
 
 
     private fun addWord() {
         mWordList.add(etWord.text.toString())
+
+        (rvStringList.adapter as RecyclerViewAdapter).notifyDataSetChanged()
     }
 
     private fun removeWord() {
         mWordList.remove(etWord.text.toString())
+        (rvStringList.adapter as RecyclerViewAdapter).notifyDataSetChanged()
     }
 }
