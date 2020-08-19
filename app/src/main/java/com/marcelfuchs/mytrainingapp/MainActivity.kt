@@ -8,10 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     // Liste mit 2 String erstellen
-    val mWordList: ArrayList<String> = ArrayList(listOf<String>("Fenster", "Haus", "Auto"))
-
-    // Variable für neues Wort instanzieren/deklarieren
-    val enteredWord: String = ""
+    private val mWordList: ArrayList<String> = ArrayList(listOf("Fenster", "Haus", "Auto"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun addWord() {
         mWordList.add(etWord.text.toString())
-
-        (rvStringList.adapter as RecyclerViewAdapter).notifyDataSetChanged()
+        rvStringList.adapter?.notifyDataSetChanged()
     }
 
     private fun removeWord() {
         mWordList.remove(etWord.text.toString())
-        (rvStringList.adapter as RecyclerViewAdapter).notifyDataSetChanged()
+        rvStringList.adapter?.notifyDataSetChanged()
     }
 }

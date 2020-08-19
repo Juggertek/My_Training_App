@@ -70,10 +70,8 @@ class RecyclerViewAdapter(private val arrayList: ArrayList<String>) :
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.word.text = arrayList.get(position)
+        holder.word.text = arrayList[position]
     }
-
-    fun updateRecyclerView() = notifyDataSetChanged()
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
