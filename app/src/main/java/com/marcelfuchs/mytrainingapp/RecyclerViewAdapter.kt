@@ -3,13 +3,13 @@ package com.marcelfuchs.mytrainingapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.list_item.view.*
+import com.marcelfuchs.mytrainingapp.databinding.ListItemBinding
+
+class ViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 class RecyclerViewAdapter(private val arrayList: ArrayList<String>) :
     RecyclerView.Adapter<ViewHolder>() {
-
 
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent
@@ -35,10 +35,7 @@ class RecyclerViewAdapter(private val arrayList: ArrayList<String>) :
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item, parent, false)
-        )
+        return ViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     /**
@@ -70,10 +67,6 @@ class RecyclerViewAdapter(private val arrayList: ArrayList<String>) :
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.word.text = arrayList[position]
+        holder.binding.tvItem.text = arrayList[position]
     }
-}
-
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val word: TextView = view.tvItem
 }
